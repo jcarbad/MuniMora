@@ -94,6 +94,9 @@
                             <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
                         </li>
                         <li>
+                            <a href="registro.php"><i class="fa fa-table fa-fw"></i> Registrar usuario</a>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Ajustes de sistema<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
