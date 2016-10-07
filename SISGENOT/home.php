@@ -22,14 +22,16 @@ require_once('auth.php');
                 echo $_SESSION['SESS_ID'];
             ?>
         </h1>
+		<form method="post" action="registroNotificacion_exec.php" accept-charset='UTF-8' name="loginform">
         <center>
-            <table align="center">
-                <tr>
-                    <td colspan="2"> <input type="text" class="btn" id="btnNuevaNot" value="Agregar notificaci&oacute;n"/></td>
-                </tr>
-            </table>
-            <h2><a href="index.php">LOG OUT</a></h2>
+				<table align="center">
+					<tr>
+						<td colspan="2"> <input type="submit" class="btn" id="btnNuevaNot" value="Agregar notificaci&oacute;n"/></td>
+					</tr>
+				</table>
+				<h2><a href="index.php">LOG OUT</a></h2>
         </center>
+		</form>
     </div>
 </body>
 </html>
