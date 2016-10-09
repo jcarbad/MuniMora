@@ -26,7 +26,7 @@ require_once('auth.php');
         <center>
 				<table align="center">
 					<tr>
-						<td colspan="2"> <input type="submit" class="btn" id="btnNuevaNot" value="Agregar notificaci&oacute;n"/></td>
+						<td colspan="2"> <input type="text" class="btn" id="btnNuevaNot" value="Agregar notificaci&oacute;n"/></td>
 					</tr>
 				</table>
 				<h2><a href="index.php">LOG OUT</a></h2>
