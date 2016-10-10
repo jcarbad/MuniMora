@@ -9,29 +9,108 @@ require_once('auth.php');
     <title>SISGENOT - Home </title>
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet" type="text/css" />
     <link href="./css/login.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+	 <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="logo">
-            <img src="./img/logo_login.png" width="200" height="200" />
-        </div>
-        <h1 align="center">
+
+<div id="wrapper">
+<table id = "ordenar">	
+<tr>	
+	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+            
+                <a class="navbar-brand" href="http://localhost/SISGENOT/home.php">Sistema de Gesti&oacute;n de Notificaciones</a>
+                 <ul align="left">
             <?php
                 echo "Bienvenido   ";
                 echo $_SESSION['SESS_ID'];
             ?>
-        </h1>
-		<form method="post" action="registroNotificacion_exec.php" accept-charset='UTF-8' name="loginform">
+        </ul></div>
+	
+		
+		<ul  align = "right">
+            <a  href="http://localhost/SISGENOT/home.php"><img src="./img/logo_login.png" width="100" height="100" /></a>
+        </ul>
+		</tr>
+              
+        </nav>
+		<table>
+               <td width = 200>       <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://localhost/SISGENOT/home.php">Crear Notificaci&oacute;n</a>
+                                </li></td>
+              <td width = 00>       <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="http://localhost/SISGENOT/home.php">Ver Notificaciones</a>
+                                </li></td>
+               </table>
+		
+		<div id="page-wrapper">
+            <div class="row">
+                
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">3</div>
+                                    <div>Notificaciones nuevas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">View las nuevas notificaciones</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+     <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">4</div>
+                                    <div>Expedientes</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">ver todos los expedientes</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+       </div>
+	       
+	</div>
+	   
+	   
+	   
         <center>
-				<table align="center">
-					<tr>
-						<td colspan="2"> <input type="submit" class="btn" id="btnNuevaNot" value="Agregar notificaci&oacute;n"/></td>
-					</tr>
-				</table>
-				<h2><a href="index.php">LOG OUT</a></h2>
+        
+            <h2><a href="index.php">LOG OUT</a></h2>
         </center>
-		</form>
-    </div>
+    
+	</div>
+	
 </body>
 </html>
