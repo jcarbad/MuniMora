@@ -21,31 +21,34 @@
 	}
 	
 	//Sanitize the POST values
-	$username = clean($_POST['usuario']);
-	$contrasena = clean($_POST['contrasena']);
-	$contrasena2 = clean($_POST['contrasena2']);
-	$type = clean($_POST['tipo']);
+	$username = clean($_POST['username']);
+	$password = clean($_POST['password']);
+	$password2 = clean($_POST['password2']);
+	$type = clean($_POST['type']);
 	
 	//Input Validations
 	if($username == '') {
 		$errmsg_arr[] = 'Username missing';
 		$errflag = true;
 	}
-	if($contrasena == '') {
+	if($password == '') {
 		$errmsg_arr[] = 'Password missing';
 		$errflag = true;
 	}
-	if($contrasena2 == '') {
+	if($password2 == '') {
 		$errmsg_arr[] = 'Confirm Password missing';
 		$errflag = true;
 	}
-
+	if($type == '') {
+		$errmsg_arr[] = 'Type missing';
+		$errflag = true;
+	}
 	
-	if($_POST['contrasena']==$_POST['contrasena2']){
+	if($_POST['password']==$_POST['password2']){
 		$succes = "¡Se han insertado los datos correctamente!";
 		if($type=="Administrador"){
 			//Create query when administrator
-			$qry = "INSERT INTO usuarios (ID, PASSWORD, TIPO) VALUES ('$_POST[usuario]','$_POST[contrasena]',$_POST[type])";
+			$qry = "INSERT INTO usuarios (ID, PASSWORD, TIPO) VALUES ('$_POST[username]','$_POST[password]',1)";
 			$sentencia = mysql_query($qry,$con);
 			if($sentencia){
 				echo "<head>";

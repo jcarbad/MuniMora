@@ -35,68 +35,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-        
-
-    
 
 </head>
 
 <body>
-        <!-- Modal para registro de usuarios -->
-    <div class="modal fade " id="myModalFormulario" action="registro_exec.php" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Agregar nuevos usuarios
-                    </div>
-                    <div class="modal-body " id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formPersonas">
-                            
-                            <div class="form-group" id="groupUsuario">
-                                <label for="usuario">Usuario:</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario" autofocus="true" placeholder="Usuario">
-                            </div>
-
-                            <div class="form-group" id="groupContrasena">
-                                <label for="contrasena">Contraseña:</label>
-                                <input type="password" class="form-control" id="contrasena"  name="contrasena" placeholder="Contrasena" maxlength="45" >
-                            </div>
-                            
-                            <div class="form-group" id="groupContrasena2">
-                                <label for="contrasena2">Contraseña:</label>
-                                <input type="password" class="form-control" id="contrasena2" name="contrasena2" placeholder="Contrasena" maxlength="45" >
-                            </div>
-                            
-                             <div class="form-group" id="groupTipo">
-                                <label for="tipo">Tipo de usuario:</label>
-                                 <select id="tipo" name="tipo" class="form-control">
-                                    <option value="1" selected>Administrador
-		                            <option value="2">Normal
-                                 </select>
-                            </div>
-                          
-
-                           
-							<div class="form-group">
-                                <input type="hidden" value="agregarTelefono" id="telefonosAction"/>
-                                <button type="submit" class="btn " id="enviar" name="enviar" >Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
-                            </div>
-
-                            <div class="form-group height25" >
-                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">Info!</strong> 
-                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
 
     <div id="wrapper">
 
@@ -152,7 +94,7 @@
                             <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
                         </li>
                          <li>
-                            <a onClick=" mostrarModal('myModalFormulario');"><i></i>Registrar usuario</a>
+                            <a href="registro.php"><i></i>Registrar usuario</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Ajustes de sistema<span class="fa arrow"></span></a>
@@ -221,7 +163,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="table-responsive">
-                                        <table class="table table-responsive table-bordered table-striped">
+                                        <table class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>C&oacute;digo</th>
@@ -263,7 +205,7 @@
 
     <!-- jQuery -->
     <script src="./css/template/vendor/jquery/jquery.min.js"></script>
-            <script src="js/modals.js"  type="text/javascript"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="./css/template/vendor/bootstrap/js/bootstrap.min.js"></script>
 
