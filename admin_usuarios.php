@@ -141,6 +141,43 @@ $result = mysql_query($qry,$con);
                     </div>
                   </div>
                 </div>
+                    <!-- /input-group -->
+                  </li>
+                  <li>
+                    <a href="home_admin.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                  </li>
+                  <li>
+                    <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
+                  </li>
+                  <li>
+                    <a onClick=" mostrarModal('myModalFormulario');"><i></i>Registrar usuario</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i>Ajustes de sistema<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                      <li>
+                        <a href="panels-wells.html">Panels and Wells</a>
+                      </li>
+                      <li>
+                        <a href="buttons.html">Buttons</a>
+                      </li>
+                      <li>
+                        <a href="notifications.html">Notifications</a>
+                      </li>
+                      <li>
+                        <a href="typography.html">Typography</a>
+                      </li>
+                      <li>
+                        <a href="icons.html"> Icons</a>
+                      </li>
+                      <li>
+                        <a href="grid.html">Grid</a>
+                      </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                  </li>
+                </ul>
+>>>>>>> origin/master
               </div>
             </div>
           </div>
