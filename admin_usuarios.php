@@ -153,7 +153,7 @@ $result = mysql_query($qry,$con);
                     <!-- /input-group -->
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                    <a href="home_admin.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                   </li>
                   <li>
                     <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
