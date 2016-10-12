@@ -5,3 +5,4 @@ function mostrarModal(id){
 function ocultarModal(id){
     $("#"+id).modal("hide");
 }
+

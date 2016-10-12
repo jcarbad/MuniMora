@@ -26,11 +26,11 @@
 
 	//Input Validations
 	if($username == '') {
-		$errmsg_arr[] = 'Username missing';
+		$errmsg_arr[] = 'Debe escribir un nombre de usuario.';
 		$errflag = true;
 	}
 	if($password == '') {
-		$errmsg_arr[] = 'Password missing';
+		$errmsg_arr[] = 'Debe escribir una contraseña.';
 		$errflag = true;
 	}
 

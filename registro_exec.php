@@ -8,6 +8,7 @@ include('js/modals.js');
 
 	//Array to store validation errors
 $errmsg_arr = array();
+$success_arr = array();
 
 	//Validation error flag
 $errflag = false;
@@ -29,15 +30,15 @@ $type = clean($_POST['tipo']);
 
 	//Input Validations
 if($username == '') {
-	$errmsg_arr[] = 'Username missing';
+	$errmsg_arr[] = 'Debe escribir un nombre de usuario.';
 	$errflag = true;
 }
 if($contrasena == '') {
-	$errmsg_arr[] = 'Password missing';
+	$errmsg_arr[] = 'Debe escribir una contraseña.';
 	$errflag = true;
 }
 if($contrasena2 == '') {
-	$errmsg_arr[] = 'Confirm Password missing';
+	$errmsg_arr[] = 'Debe confirmar la contraseña.';
 	$errflag = true;
 }
 if($type == '') {
@@ -48,17 +49,21 @@ if($type == '') {
 if(!$errflag){
 	if($_POST['contrasena']==$_POST['contrasena2']){
 		$succes = "¡Se han insertado los datos correctamente!";
+		$success_arr[] = $succes;
 
 			//Create query when administrator
 		$qry = "INSERT INTO usuarios (ID, PASSWORD, TIPO) VALUES ('$_POST[usuario]','$_POST[contrasena]',$_POST[tipo])";
 		$sentencia = mysql_query($qry,$con);
-		if($sentencia){		
+		if($sentencia){	
+			$success_arr[] = $succes;
+			$_SESSION['SUCCESS'] = $success_arr;
+			session_write_close();	
 			header('Location: admin_usuarios.php');
+			exit();
 		} else{
 			$errmsg_arr[] = 'El usuario digitado ya existe.';
 			$errflag = true;
-		}
-		
+		}	
 	}else {
 		$errmsg_arr[] = 'Las contraseñas no coinciden!';
 		$errflag = true;
@@ -71,5 +76,13 @@ if($errflag) {
 	session_write_close();
 	header("location: admin_usuarios.php");
 	exit();
+}
+
+function alerta(){
+	if($succes){
+		echo '<script language="javascript">';
+		echo 'alert("message successfully sent")';
+		echo '</script>';
+	}
 }
 ?>

@@ -47,52 +47,53 @@ $result = mysql_query($qry,$con);
   <?php  //******** CORRECCION PARA QUE CARGUE EL MODAL SI SE INTRODUCEN DATOS ERRÓNEOS ********
   if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){
     echo 'onLoad=mostrarModal("myModalFormulario");';  // ***** MODAL DE ERROR ****
-  } else{
+  }else{
     echo 'onLoad=""';
   }
-?>>
-<!-- modal para agregar usuarios -->
+  ?>
+  >
+  <!-- modal para agregar usuarios -->
 
-<!-- Modal para registro de usuarios -->
-<div class="modal fade " id="myModalFormulario" action="registro_exec.php" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" id="myModalTitle">Agregar nuevos usuarios
-        </div>
-        <div class="modal-body " id="myModalMessage">
+  <!-- Modal para registro de usuarios -->
+  <div class="modal fade " id="myModalFormulario" action="registro_exec.php" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="myModalTitle">Agregar nuevos usuarios
+          </div>
+          <div class="modal-body " id="myModalMessage">
 
-          <form method="post" action="registro_exec.php" accept-charset='UTF-8' name="formUsuario">
-            <div class="form-group" id="groupUsuario">
-              <label for="usuario">Usuario:</label>
-              <input type="text" class="form-control" id="usuario" name="usuario" autofocus="true" placeholder="Usuario">
-            </div>
+            <form method="post" action="registro_exec.php" accept-charset='UTF-8' name="formUsuario">
+              <div class="form-group" id="groupUsuario">
+                <label for="usuario">Usuario:</label>
+                <input type="text" class="form-control" id="usuario" name="usuario" autofocus="true" placeholder="Usuario">
+              </div>
 
-            <div class="form-group" id="groupContrasena">
-              <label for="contrasena">Contraseña:</label>
-              <input type="password" class="form-control" id="contrasena"  name="contrasena" placeholder="Contrasena" maxlength="45" >
-            </div>
+              <div class="form-group" id="groupContrasena">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" class="form-control" id="contrasena"  name="contrasena" placeholder="Contraseña" maxlength="45" >
+              </div>
 
-            <div class="form-group" id="groupContrasena2">
-              <label for="contrasena2">Contraseña:</label>
-              <input type="password" class="form-control" id="contrasena2" name="contrasena2" placeholder="Contrasena" maxlength="45" >
-            </div>
+              <div class="form-group" id="groupContrasena2">
+                <label for="contrasena2">Contraseña:</label>
+                <input type="password" class="form-control" id="contrasena2" name="contrasena2" placeholder="Contraseña" maxlength="45" >
+              </div>
 
-            <div class="form-group" id="groupTipo">
-              <label for="tipo">Tipo de usuario:</label>
-              <select id="tipo" name="tipo" class="form-control">
-                <option value="1" selected>Administrador
-                  <option value="2">Inspector
-                  </select>
-                </div>
+              <div class="form-group" id="groupTipo">
+                <label for="tipo">Tipo de usuario:</label>
+                <select id="tipo" name="tipo" class="form-control">
+                  <option value="1" selected>Administrador
+                    <option value="2">Inspector
+                    </select>
+                  </div>
 
 
 
-                <div class="form-group">
-                  <button type="submit" class="btn " id="enviar" name="enviar" onSubmit ="mostrarModal('myModalFormulario')">Guardar</button>
-                  <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
-                </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
+                    <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
+                  </div>
 
                   <!--div class="form-group height25" >
                     <div class="alert alert-success hiddenDiv" id="mesajeResult">
@@ -124,6 +125,7 @@ $result = mysql_query($qry,$con);
           </div>
         </div>
 
+        <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
 
         <div class="modal fade " id="myModalExito" action="registro_exec.php" role="dialog">
           <div class="modal-dialog modal-lg">
@@ -143,6 +145,7 @@ $result = mysql_query($qry,$con);
             </div>
           </div>
 
+          <!-- ****************************************************************************************************************-->
 
           <div id="wrapper">
             <!-- Navigation -->
