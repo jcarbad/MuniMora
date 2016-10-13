@@ -17,7 +17,7 @@ $result = mysql_query($qry,$con);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Sisgenot - Administraci&oacute;n</title>
+  <title>SISGENOT- Administraci&oacute;n</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="./css/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
