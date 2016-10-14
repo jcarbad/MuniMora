@@ -49,7 +49,7 @@ unset($_SESSION['SESS_TIPO']);
                 </tr>
             </table>
         </form>
-        <center><a href="">¿Olvidó su contraseña?</a></center>
+        <!--center><a href="">¿Olvidó su contraseña?</a></center-->
     </div>
 </body>
 </html>

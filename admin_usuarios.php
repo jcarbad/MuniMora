@@ -163,14 +163,17 @@ $result = mysql_query($qry,$con);
               <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <?php
+                    echo $_SESSION['SESS_ID'];
+                    ?>
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                   </a>
                   <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a>
+                    <!--li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
                     </li>
-                    <li class="divider"></li>
+                    <li class="divider"></li-->
                     <li><a href="index.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                   </ul>
@@ -199,10 +202,10 @@ $result = mysql_query($qry,$con);
                     <li>
                       <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a onClick=" mostrarModal('myModalFormulario');"><i class="fa fa-table fa-fw"></i>Registrar usuario</a>
-                    </li>
-                    <li>
+                    </li-->
+                    <!--li>
                       <a href="#"><i class="fa fa-wrench fa-fw"></i>Ajustes de sistema<span class="fa arrow"></span></a>
                       <ul class="nav nav-second-level">
                         <li>
@@ -224,8 +227,8 @@ $result = mysql_query($qry,$con);
                           <a href="grid.html">Grid</a>
                         </li>
                       </ul>
-                      <!-- /.nav-second-level -->
-                    </li>
+                      
+                    </li-->
                   </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -253,13 +256,13 @@ $result = mysql_query($qry,$con);
                             <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="#">Agregar usuario</a>
+                            <li><a onclick="mostrarModal('myModalFormulario');">Agregar usuario</a>
                             </li>
-                            <li><a href="#">Editar usuario</a>
+                            <!--li><a href="#">Editar usuario</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="#">Eliminar usuario</a>
-                            </li>
+                            </li-->
                           </ul>
                         </div>
                       </div>
@@ -275,7 +278,7 @@ $result = mysql_query($qry,$con);
                             <thead>
                               <tr>
                                 <th>Usuario</th>
-                                <th>Password</th>
+                                <th>Contraseña</th>
                                 <th>Tipo</th>
                               </tr>
                             </thead>

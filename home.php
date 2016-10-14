@@ -14,6 +14,7 @@ require_once('auth.php');
 </head>
 
 <body>
+
     <div id="wrapper">
         <table id = "ordenar">
             <tr>
@@ -48,6 +49,7 @@ require_once('auth.php');
                 </td>
             </tr>
         </table>
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -102,5 +104,6 @@ require_once('auth.php');
             </center>
         </div>
     </div>
+    
 </body>
 </html>
