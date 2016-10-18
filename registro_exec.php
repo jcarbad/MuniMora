@@ -58,7 +58,7 @@ if(!$errflag){
 			$success_arr[] = $succes;
 			$_SESSION['SUCCESS'] = $success_arr;
 			session_write_close();	
-			header('Location: admin_usuarios.php');
+			header('Location: succes.php');
 			exit();
 		} else{
 			$errmsg_arr[] = 'El usuario digitado ya existe.';
