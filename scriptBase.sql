@@ -16,6 +16,8 @@ USE `sisgenot` ;
 -- Table `sisgenot`.`usuarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sisgenot`.`usuarios` (
+  `NAME` VARCHAR(25) NOT NULL,
+  `LASTNAME` VARCHAR(25) NOT NULL,
   `ID` VARCHAR(15) NOT NULL,
   `PASSWORD` VARCHAR(20) NOT NULL,
   `TIPO` INT NULL,

@@ -65,6 +65,16 @@ $result = mysql_query($qry,$con);
           <div class="modal-body " id="myModalMessage">
 
             <form method="post" action="registro_exec.php" accept-charset='UTF-8' name="formUsuario">
+              <div class="form-group" id="groupNombre">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" autofocus="true" placeholder="Nombre">
+              </div>
+
+              <div class="form-group" id="groupApellido">
+                <label for="apellido">Apellido:</label>
+                <input type="text" class="form-control" id="apellido" name="apellido" autofocus="true" placeholder="Apellido">
+              </div> 
+
               <div class="form-group" id="groupUsuario">
                 <label for="usuario">Usuario:</label>
                 <input type="text" class="form-control" id="usuario" name="usuario" autofocus="true" placeholder="Usuario">
@@ -127,7 +137,7 @@ $result = mysql_query($qry,$con);
 
         <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
 
-        <div class="modal fade " id="myModalExito" action="registro_exec.php" role="dialog">
+        <div class="modal fade" id="myModalExito" action="registro_exec.php" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
@@ -277,9 +287,12 @@ $result = mysql_query($qry,$con);
                           <table class="table table-responsive table-bordered table-striped">
                             <thead>
                               <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Tipo</th>
+                                <th>Opciones</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -287,7 +300,14 @@ $result = mysql_query($qry,$con);
                                 <tr>
                                   <td><?php echo $row[0]; ?></td>
                                   <td><?php echo $row[1]; ?></td>
-                                  <td><?php echo ($row[2] == 1) ?"Administrador" : "Inspector" ; ?></td>
+                                  <td><?php echo $row[2]; ?></td>
+                                  <td><?php echo $row[3]; ?></td>
+                                  <td><?php echo ($row[4] == 1) ?"Administrador" : "Inspector" ; ?></td>
+                                  <td>
+                                    <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarUsuario.php?value=<?php echo $row[2];?>'">Editar</button>
+                                    <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarUsuario_exec.php?value=<?php echo $row[2];?>'">Eliminar</button>
+
+                                  </td> 
                                 </tr>
                                 <?php } ?>
                               </tbody>

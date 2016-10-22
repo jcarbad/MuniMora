@@ -23,12 +23,22 @@ function clean($str) {
 }
 
 	//Sanitize the POST values
+$nombre = clean($_POST['nombre']);
+$apellido = clean($_POST['apellido']);
 $username = clean($_POST['usuario']);
 $contrasena = clean($_POST['contrasena']);
 $contrasena2 = clean($_POST['contrasena2']);
 $type = clean($_POST['tipo']);
 
 	//Input Validations
+if($nombre == '') {
+	$errmsg_arr[] = 'Debe escribir un nombre.';
+	$errflag = true;
+}
+if($apellido == '') {
+	$errmsg_arr[] = 'Debe escribir un apellido.';
+	$errflag = true;
+}
 if($username == '') {
 	$errmsg_arr[] = 'Debe escribir un nombre de usuario.';
 	$errflag = true;
@@ -52,7 +62,7 @@ if(!$errflag){
 		$success_arr[] = $succes;
 
 			//Create query when administrator
-		$qry = "INSERT INTO usuarios (ID, PASSWORD, TIPO) VALUES ('$_POST[usuario]','$_POST[contrasena]',$_POST[tipo])";
+		$qry = "INSERT INTO usuarios (NAME, LASTNAME,ID, PASSWORD, TIPO) VALUES ('$_POST[nombre]','$_POST[apellido]','$_POST[usuario]','$_POST[contrasena]',$_POST[tipo])";
 		$sentencia = mysql_query($qry,$con);
 		if($sentencia){	
 			$success_arr[] = $succes;
@@ -78,11 +88,4 @@ if($errflag) {
 	exit();
 }
 
-function alerta(){
-	if($succes){
-		echo '<script language="javascript">';
-		echo 'alert("message successfully sent")';
-		echo '</script>';
-	}
-}
 ?>
