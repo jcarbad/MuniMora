@@ -139,7 +139,10 @@ $result = mysql_query($qry,$con);
 
                           <td>Contraseña:<input class="form-control" id="contrasenna" name="contrasenna" autofocus="true" placeholder="Contraseña" value="<?php echo $row[3];?>"></input></td>
 
-                          <td>Tipo:<input class="form-control" id="tipo" name="tipo" autofocus="true" placeholder="Tipo" value="<?php echo $row[4];?>"></input></td>
+                          <td style="width:160px;">Tipo: <select class="form-control" id="tipo" name="tipo" >
+                  							<option <?php if($row[4]==1){ echo 'selected'; }else{} ?> value="1" >Administrador
+                   							<option <?php if($row[4]==2){ echo 'selected'; }else{} ?> value="2">Inspector
+                  					 </select></td>
                           
                         </tr>
                       </tbody>
