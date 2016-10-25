@@ -2,18 +2,18 @@
 	//Start session
 session_start();
 
-	//Include database connection details
+//Include database connection details
 include('connection.php');
 include('js/modals.js');
 
-	//Array to store validation errors
+//Array to store validation errors
 $errmsg_arr = array();
 $success_arr = array();
 
-	//Validation error flag
+//Validation error flag
 $errflag = false;
 
-	//Function to sanitize values received from the form. Prevents SQL injection
+//Function to sanitize values received from the form. Prevents SQL injection
 function clean($str) {
 	$str = @trim($str);
 	if(get_magic_quotes_gpc()) {
