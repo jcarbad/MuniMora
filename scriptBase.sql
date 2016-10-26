@@ -22,6 +22,18 @@ CREATE TABLE IF NOT EXISTS `sisgenot`.`usuarios` (
   `PASSWORD` VARCHAR(20) NOT NULL,
   `TIPO` INT NULL,
   PRIMARY KEY (`ID`));
+  
+  CREATE TABLE IF NOT EXISTS `sisgenot`.`notificaciones` (
+  `expediente` VARCHAR(30) NOT NULL,
+  `propietario` VARCHAR(100) NOT NULL,
+  `receptor` VARCHAR(100) NOT NULL,
+  `fechaCad` date NOT NULL,
+  `fechaCre` date NOT NULL,
+  `descripcion` VARCHAR(20) NOT NULL,
+  `direccion` VARCHAR(20) NOT NULL,
+  `estado` INT NULL,
+  `tipo` INT NULL,
+  PRIMARY KEY (`expediente`));
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

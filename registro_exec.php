@@ -64,16 +64,16 @@ if(!$errflag){
 			//Create query when administrator
 		$qry = "INSERT INTO usuarios (NAME, LASTNAME,ID, PASSWORD, TIPO) VALUES ('$_POST[nombre]','$_POST[apellido]','$_POST[usuario]','$_POST[contrasena]',$_POST[tipo])";
 		$sentencia = mysql_query($qry,$con);
-		if($sentencia){	
+		if($sentencia){
 			$success_arr[] = $succes;
 			$_SESSION['SUCCESS'] = $success_arr;
-			session_write_close();	
+			session_write_close();
 			header('Location: succes.php');
 			exit();
 		} else{
 			$errmsg_arr[] = 'El usuario digitado ya existe.';
 			$errflag = true;
-		}	
+		}
 	}else {
 		$errmsg_arr[] = 'Las contraseñas no coinciden!';
 		$errflag = true;

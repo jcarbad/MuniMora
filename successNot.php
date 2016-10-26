@@ -43,15 +43,7 @@ $result = mysql_query($qry,$con);
   <![endif]-->
 </head>
 
-<body
-<?php  //******** CORRECCION PARA QUE CARGUE EL MODAL SI SE INTRODUCEN DATOS ERRÓNEOS ********
-if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ){
-  echo 'onLoad=mostrarModal("myModalFormulario");';  // ***** MODAL DE ERROR ****
-}else{
-  echo 'onLoad=""';
-}
-?>
->
+<body onLoad="mostrarModal('myModalExito')">
   <!-- modal para agregar usuarios -->
 
   <!-- Modal para registro de usuarios -->
@@ -144,20 +136,23 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
           </div>
         </div>
 
-        <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
+        <!-- *************************************  MODAL PARA NOTIFICACIÓN AGREGADA CON ÉXITO *************************************-->
 
-        <div class="modal fade" id="myModalExito" action="registro_exec.php" role="dialog">
+        <div class="modal fade " id="myModalExito" action="registro_exec.php" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalTitle">Agregar nuevos usuarios
+                <h4 class="modal-title" id="myModalTitle">Agregar nuevas notificaciones
                 </div>
                 <div class="modal-body " id="myModalMessage">
                   <div class="form-group height25" >
                     <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                      <strong id="mesajeResultNeg">Usuario ingresado con éxito!</strong>
+                      <strong id="mesajeResultNeg">Notificación agregada con éxito!</strong>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-success" id="enviar" name="enviar" onclick="location.href='http://localhost/MuniMora/index_notificaciones.php'">OK</button>
                   </div>
                 </div>
               </div>

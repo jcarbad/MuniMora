@@ -2,7 +2,7 @@
 
 require_once('auth.php');
 require_once('connection.php');
-$qry = 'SELECT * FROM usuarios;';
+$qry = 'SELECT * FROM notificaciones;';
 $result = mysql_query($qry,$con);
 ?>
 
@@ -17,7 +17,7 @@ $result = mysql_query($qry,$con);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SISGENOT- Administraci&oacute;n</title>
+  <title>SISGENOT- P&aacute;gina principal de inspectores</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="./css/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@ $result = mysql_query($qry,$con);
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">SISGENOT - Administraci&oacute;n del Sistema</a>
+        <a class="navbar-brand" href="#">SISGENOT - P&aacute;gina principal de notificaciones</a>
       </div>
       <!-- /.navbar-header -->
       <ul class="nav navbar-top-links navbar-right">
@@ -89,10 +89,10 @@ $result = mysql_query($qry,$con);
               <!-- /input-group -->
             </li>
             <li>
-              <a href="home_admin.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+              <a href="home.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
             </li>
             <li>
-              <a href="admin_usuarios.php"><i class="fa fa-table fa-fw"></i> Usuarios activos</a>
+              <a href="index_notificaciones.php"><i class="fa fa-table fa-fw"></i>Registro de notificaciones</a>
             </li>
           </ul>
         </div>
@@ -104,13 +104,13 @@ $result = mysql_query($qry,$con);
     <div id="page-wrapper">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="page-header">Editando usuario</h1>
+          <h1 class="page-header">Editando Notificacion</h1>
         </div>
         <!-- /.col-lg-12 -->
       </div>
       <!-- /.row -->
       <div class="row">
-        <div class="col-lg-8" style="width: 880px">
+        <div class="col-lg-12">
           <div class="panel panel-default">
             <div class="panel-heading">
               <i class="fa fa-edit fa-fw"></i> Editando
@@ -119,36 +119,40 @@ $result = mysql_query($qry,$con);
             <div class="panel-body">
               <div class="row">
                 <div class="">
-                  <table class="table table-responsive table-bordered table-striped"><h2>Datos de usuario</h2>
+                  <table class="table table-responsive table-bordered table-striped"><h2>Datos de notificacion</h2>
                     <tbody>
                       <tr>
                         <?php
                         $id = $_REQUEST['value'];
-                        $qry = "SELECT * FROM usuarios WHERE ID = '$id'";
+                        $qry = "SELECT * FROM notificaciones WHERE expediente = '$id'";
                         $sentencia = mysql_query($qry,$con);
                         $row = mysql_fetch_row($sentencia);
                         ?>
-                        <form method="POST" action="modificarUsuario_exec.php?id1=<?php echo $row[2];?>" accept-charset='UTF-8' name="formUsuario1">
-
-
-                          <td>Nombre:<input class="form-control" id="nombre" name="nombre" autofocus="true" placeholder="Nombre" value="<?php echo $row[0];?>"></input></td>
-
-                          <td>Apellido:<input class="form-control" id="apellido" name="apellido" autofocus="true" placeholder="Apellido" value="<?php echo $row[1];?>"></input></td>
-
-                          <td>Usuario:<input class="form-control" id="usuario" name="usuario" autofocus="true" placeholder="Usuario" value="<?php echo $row[2];?>"></input></td>
-
-                          <td>Contraseña:<input class="form-control" id="contrasenna" name="contrasenna" autofocus="true" placeholder="Contraseña" value="<?php echo $row[3];?>"></input></td>
-
-                          <td style="width:160px;">Tipo: <select class="form-control" id="tipo" name="tipo" >
-                  							<option <?php if($row[4]==1){ echo 'selected'; }else{} ?> value="1" >Administrador
-                   							<option <?php if($row[4]==2){ echo 'selected'; }else{} ?> value="2">Inspector
-                  					 </select></td>
-
+                        <form method="POST" action="modificarNotificacion_exec.php?id1=<?php echo $row[0];?>" accept-charset='UTF-8' name="formNotificacion">
+                          <td>Expediente:<input class="form-control" id="exp" name="exp" autofocus="true" value="<?php echo $row[0];?>"></input></td>
+                          <td>Propietario:<input class="form-control" id="propietario" name="propietario" autofocus="true" value="<?php echo $row[1];?>"></input></td>
+                          <td>Receptor:<input class="form-control" id="receptor" name="receptor" autofocus="true" value="<?php echo $row[2];?>"></input></td>
+                          <td>Fecha Creacion:<input class="form-control" id="creacion" name="creacion" autofocus="true" type="date" value="<?php echo $row[4];?>"></input></td>
+                          <td>Fecha Caducacion:<input class="form-control" id="caducacion" name="caducacion" autofocus="true" type="date" value="<?php echo $row[3];?>"></input></td>
+                          <td>Descripcion:<input class="form-control" id="descripcion" name="descripcion" autofocus="true"  value="<?php echo $row[5];?>"></input></td>
+                          <td>Direccion:<input class="form-control" id="direccion" name="direccion" autofocus="true"  value="<?php echo $row[6];?>"></input></td>
+                          <td>Estado:
+                            <select class="form-control" id="estado" name="estado">
+                              <option <?php if($row[7]==1){ echo 'selected'; }else{} ?> value="1">Pendiente
+                              <option <?php if($row[7]==2){ echo 'selected'; }else{} ?> value="2">Resuelta
+                            </select>
+                          </td>
+                          <td>Tipo:
+                            <select class="form-control" id="tipo" name="tipo">
+                              <option <?php if($row[8]==1){ echo 'selected'; }else{} ?> value="1">Preventiva
+                              <option <?php if($row[8]==2){ echo 'selected'; }else{} ?> value="2">Segunda Notificacion
+                            </select>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                     <button type="submit" class="btn btn-success" id="enviar" name="enviar">OK</button>
-                    <button type="button" class="btn btn-danger" id="cancel" name="cancel" onclick="location.href='http://localhost/MuniMora/admin_usuarios.php'">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="cancel" name="cancel" onclick="location.href='http://localhost/MuniMora/index_notificaciones.php'">Cancelar</button>
                   </form>
                   <!-- /.table-responsive -->
                 </div>
