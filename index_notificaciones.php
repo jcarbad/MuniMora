@@ -2,7 +2,8 @@
 
 require_once('auth.php');
 require_once('connection.php');
-$qry = 'SELECT * FROM notificaciones;';
+// Omite colmna 'id'
+$qry = 'SELECT expediente, propietario, receptor, fechaCad, fechaCre, descripcion, direccion, estado, tipo, observaciones FROM notificaciones;';
 $result = mysql_query($qry,$con);
 
 ?>
@@ -67,7 +68,13 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
             <form method="post" action="notificaciones_exec.php" accept-charset='UTF-8' name="formUsuario">
               <div class="form-group" id="groupExp">
                 <label for="exp">Número de expediente</label>
-                <input type="text" class="form-control" id="exp" name="exp" autofocus="true" placeholder="Número de expediente">
+                <?php
+                	$query2 = 'SELECT id FROM notificaciones ORDER BY id DESC LIMIT 1;';
+                	$result1 = mysql_query($query2,$con);
+                	while($row1 = mysql_fetch_row($result1)){ 
+               	?>
+               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" value=<?php echo "EXP.",$row1[0]+1,"-16"; ?>>
+                <?php }?>
               </div>
 
               <div class="form-group" id="groupPropietario">
@@ -363,7 +370,6 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 
           <!-- Custom Theme JavaScript -->
           <script src="./css/template/dist/js/sb-admin-2.js"></script>
-
         </body>
 
         </html>

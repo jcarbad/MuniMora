@@ -70,9 +70,9 @@ if(!$errflag){
 
   //Create query when administrator
   $qry = "INSERT INTO notificaciones (expediente, propietario, receptor, fechaCad, fechaCre, descripcion, direccion,
-    estado, tipo, observaciones) VALUES ('$_POST[exp]','$_POST[propietario]','$_POST[receptor]',
-      STR_TO_DATE('$_POST[caducacion]', '%Y-%m-%d'),STR_TO_DATE('$_POST[creacion]','%Y-%m-%d'),'$_POST[descripcion]',
-      '$_POST[direccion]', $_POST[estado],$_POST[tipo],'$_POST[observaciones]')";
+    estado, tipo, observaciones) VALUES ('$expediente','$propietario','$receptor',
+      STR_TO_DATE('$caducacion', '%Y-%m-%d'),STR_TO_DATE('$creacion','%Y-%m-%d'),'$descripcion',
+      '$direccion', $estado,$type,'$observaciones')";
 
   $sentencia = mysql_query($qry,$con);
   if($sentencia){
