@@ -31,11 +31,10 @@ $result = mysql_query($qry,$con);
 
   <!-- Morris Charts CSS -->
   <link href="./css/template/vendor/morrisjs/morris.css" rel="stylesheet">
-  <link href="./css/congelado.css" rel="stylesheet">
+
   <!-- Custom Fonts -->
   <link href="./css/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <script src="js/modals.js" type="text/javascript"></script>
-  <script src="js/validaciones.js" type="text/javascript"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -68,7 +67,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
             <form method="post" action="notificaciones_exec.php" accept-charset='UTF-8' name="formUsuario">
               <div class="form-group" id="groupExp">
                 <label for="exp">Número de expediente</label>
-                <input type="number" class="form-control" id="exp" name="exp" autofocus="true" placeholder="Número de expediente">
+                <input type="text" class="form-control" id="exp" name="exp" autofocus="true" placeholder="Número de expediente">
               </div>
 
               <div class="form-group" id="groupPropietario">
@@ -118,7 +117,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn " onClick="validarNotificacion()" id="enviar" name="enviar">Guardar</button>
+                    <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
                     <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
                   </div>
 
@@ -307,8 +306,8 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                             </thead>
                             <tbody>
                               <?php while ($row = mysql_fetch_row($result)) { ?>
-                                <tr >
-                                  <td class="congelado"><?php echo $row[0]; ?></td>
+                                <tr>
+                                  <td><?php echo $row[0]; ?></td>
                                   <td><?php echo $row[1]; ?></td>
                                   <td><?php echo $row[2]; ?></td>
                                   <td><?php echo $row[4]; ?></td>
@@ -316,7 +315,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                                   <td><?php echo $row[5]; ?></td>
                                   <td><?php echo $row[6]; ?></td>
                                   <td><?php echo ($row[7] == 1) ? "Pendiente":"Resuelta";?></td>
-                                  <td ><?php echo ($row[8] == 1) ? "Preventiva":"Preventiva (Segunda)";?></td>
+                                  <td><?php echo ($row[8] == 1) ? "Preventiva":"Preventiva (Segunda)";?></td>
                                   <td>
                                     <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarNotificacion.php?value=<?php echo $row[0];?>'">Editar</button>
                                     <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarNoti_exec.php?value=<?php echo $row[0];?>'">Eliminar</button>
