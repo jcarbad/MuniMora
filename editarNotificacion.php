@@ -148,6 +148,7 @@ $result = mysql_query($qry,$con);
                               <option <?php if($row[8]==2){ echo 'selected'; }else{} ?> value="2">Segunda Notificacion
                             </select>
                           </td>
+                          <td>Observaciones:<input class="form-control" id="observaciones" name="observaciones" autofocus="true"  value="<?php echo $row[9];?>"></input></td>
                         </tr>
                       </tbody>
                     </table>

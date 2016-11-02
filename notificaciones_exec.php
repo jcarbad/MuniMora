@@ -32,6 +32,7 @@ $descripcion = clean($_POST['descripcion']);
 $direccion = clean($_POST['direccion']);
 $estado = clean($_POST['estado']);
 $type = clean($_POST['tipo']);
+$observaciones = clean($_POST['observaciones']);
 
 //Input Validations
 if($expediente == '') {
@@ -69,9 +70,9 @@ if(!$errflag){
 
   //Create query when administrator
   $qry = "INSERT INTO notificaciones (expediente, propietario, receptor, fechaCad, fechaCre, descripcion, direccion,
-    estado, tipo) VALUES ('$_POST[exp]','$_POST[propietario]','$_POST[receptor]',
+    estado, tipo, observaciones) VALUES ('$_POST[exp]','$_POST[propietario]','$_POST[receptor]',
       STR_TO_DATE('$_POST[caducacion]', '%Y-%m-%d'),STR_TO_DATE('$_POST[creacion]','%Y-%m-%d'),'$_POST[descripcion]',
-      '$_POST[direccion]', $_POST[estado],$_POST[tipo])";
+      '$_POST[direccion]', $_POST[estado],$_POST[tipo],'$_POST[observaciones]')";
 
   $sentencia = mysql_query($qry,$con);
   if($sentencia){
