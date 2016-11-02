@@ -87,7 +87,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 
               <div class="form-group" id="groupFechaCaducacion">
                 <label for="caducacion">Fecha de caducación:</label>
-                <input type="date" id="caducacion" name="caducacion" autofocus="true">
+                <input type="date" id="caducacion" name="caducacion" autofocus="true" min=<?php echo date("Y-m-d");?>>
               </div>
 
               <div class="form-group" id="groupDescripcion">
@@ -95,9 +95,14 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                 <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
               </div>
 
-              <div class="form-group" id="groupDeireccion">
+              <div class="form-group" id="groupDireccion">
                 <label for="direccion">Dirección:</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+              </div>
+
+              <div class="form-group" id="groupObservaciones">
+                <label for="observaciones">Observaciones:</label>
+                <input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones">
               </div>
 
               <div class="form-group" id="groupEstado">
@@ -115,6 +120,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                     <option value="2">Segunda Notificación
                     </select>
                   </div>
+
 
                   <div class="form-group">
                     <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
@@ -151,13 +157,16 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalTitle">Agregar nuevos usuarios
+                <h4 class="modal-title" id="myModalTitle">Agregar una notificación
                 </div>
                 <div class="modal-body " id="myModalMessage">
                   <div class="form-group height25" >
                     <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                      <strong id="mesajeResultNeg">Usuario ingresado con éxito!</strong>
+                      <strong id="mesajeResultNeg">Notificación agregada con éxito!</strong>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-success" id="enviar" name="enviar" onclick="location.href='http://localhost/MuniMora/index_notificaciones.php'">OK</button>
                   </div>
                 </div>
               </div>
@@ -218,8 +227,16 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                       <li>
                         <a href="home.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                       </li>
-                      <li>
-                        <a href="index_notificaciones.php"><i class="fa fa-table fa-fw"></i>Registro de notificaciones</a>
+                      <li class="active">
+                        <a href="index_notificaciones.php">
+                          <i class="fa fa-table fa-fw"></i>Registro de notificaciones
+                          <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                <li>
+                                    <a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
+                                </li>
+                               
+                            </ul>
                       </li>
                     <!--li>
                       <a onClick=" mostrarModal('myModalFormulario');"><i class="fa fa-table fa-fw"></i>Registrar usuario</a>
@@ -268,21 +285,6 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                     <div class="panel-heading">
                       <i class="fa fa-bar-chart-o fa-fw"></i> Notificaciones recientes
                       <div class="pull-right">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            Acciones
-                            <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
-                            </li>
-                            <!--li><a href="#">Editar usuario</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Eliminar usuario</a>
-                            </li-->
-                          </ul>
-                        </div>
                       </div>
                     </div>
                     <!-- /.panel-heading -->
@@ -301,6 +303,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                                 <th>Dirección</th>
                                 <th>Estado de notificación</th>
                                 <th>Tipo</th>
+                                <th>Observaciones</th>
                                 <th>Acciones</th>
                               </tr>
                             </thead>
@@ -316,6 +319,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                                   <td><?php echo $row[6]; ?></td>
                                   <td><?php echo ($row[7] == 1) ? "Pendiente":"Resuelta";?></td>
                                   <td><?php echo ($row[8] == 1) ? "Preventiva":"Preventiva (Segunda)";?></td>
+                                  <td><?php echo $row[9]; ?></td>
                                   <td>
                                     <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarNotificacion.php?value=<?php echo $row[0];?>'">Editar</button>
                                     <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarNoti_exec.php?value=<?php echo $row[0];?>'">Eliminar</button>

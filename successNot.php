@@ -79,7 +79,7 @@ $result = mysql_query($qry,$con);
 
               <div class="form-group" id="groupFechaCaducacion">
                 <label for="caducacion">Fecha de caducación:</label>
-                <input type="date" id="caducacion" name="caducacion" autofocus="true">
+                <input type="date" id="caducacion" name="caducacion" autofocus="true" min=<?php echo date("Y-m-d");?>>
               </div>
 
               <div class="form-group" id="groupDescripcion">
@@ -87,9 +87,14 @@ $result = mysql_query($qry,$con);
                 <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
               </div>
 
-              <div class="form-group" id="groupDeireccion">
+              <div class="form-group" id="groupDireccion">
                 <label for="direccion">Dirección:</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+              </div>
+
+              <div class="form-group" id="groupObservaciones">
+                <label for="observaciones">Observaciones:</label>
+                <input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones">
               </div>
 
               <div class="form-group" id="groupEstado">
@@ -107,6 +112,7 @@ $result = mysql_query($qry,$con);
                     <option value="2">Segunda Notificación
                     </select>
                   </div>
+
 
                   <div class="form-group">
                     <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
@@ -136,14 +142,14 @@ $result = mysql_query($qry,$con);
           </div>
         </div>
 
-        <!-- *************************************  MODAL PARA NOTIFICACIÓN AGREGADA CON ÉXITO *************************************-->
+        <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
 
-        <div class="modal fade " id="myModalExito" action="registro_exec.php" role="dialog">
+        <div class="modal fade" id="myModalExito" action="registro_exec.php" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalTitle">Agregar nuevas notificaciones
+                <h4 class="modal-title" id="myModalTitle">Agregar una notificación
                 </div>
                 <div class="modal-body " id="myModalMessage">
                   <div class="form-group height25" >
@@ -213,8 +219,16 @@ $result = mysql_query($qry,$con);
                       <li>
                         <a href="home.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                       </li>
-                      <li>
-                        <a href="index_notificaciones.php"><i class="fa fa-table fa-fw"></i>Registro de notificaciones</a>
+                      <li class="active">
+                        <a href="index_notificaciones.php">
+                          <i class="fa fa-table fa-fw"></i>Registro de notificaciones
+                          <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                                <li>
+                                    <a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
+                                </li>
+                               
+                            </ul>
                       </li>
                     <!--li>
                       <a onClick=" mostrarModal('myModalFormulario');"><i class="fa fa-table fa-fw"></i>Registrar usuario</a>
@@ -263,21 +277,6 @@ $result = mysql_query($qry,$con);
                     <div class="panel-heading">
                       <i class="fa fa-bar-chart-o fa-fw"></i> Notificaciones recientes
                       <div class="pull-right">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            Acciones
-                            <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
-                            </li>
-                            <!--li><a href="#">Editar usuario</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="#">Eliminar usuario</a>
-                            </li-->
-                          </ul>
-                        </div>
                       </div>
                     </div>
                     <!-- /.panel-heading -->
@@ -296,6 +295,7 @@ $result = mysql_query($qry,$con);
                                 <th>Dirección</th>
                                 <th>Estado de notificación</th>
                                 <th>Tipo</th>
+                                <th>Observaciones</th>
                                 <th>Acciones</th>
                               </tr>
                             </thead>
@@ -311,6 +311,7 @@ $result = mysql_query($qry,$con);
                                   <td><?php echo $row[6]; ?></td>
                                   <td><?php echo ($row[7] == 1) ? "Pendiente":"Resuelta";?></td>
                                   <td><?php echo ($row[8] == 1) ? "Preventiva":"Preventiva (Segunda)";?></td>
+                                  <td><?php echo $row[9]; ?></td>
                                   <td>
                                     <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarNotificacion.php?value=<?php echo $row[0];?>'">Editar</button>
                                     <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarNoti_exec.php?value=<?php echo $row[0];?>'">Eliminar</button>

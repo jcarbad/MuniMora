@@ -13,11 +13,12 @@ $caducacion = $_POST['caducacion'];
 $descripcion = $_POST['descripcion'];
 $direccion = $_POST['direccion'];
 $estado = $_POST['estado'];
-$tipo = $_POST['tipo'] ;
+$tipo = $_POST['tipo'];
+$observaciones = $_POST['observaciones'] ;
 
 $qry = "UPDATE notificaciones SET expediente ='$expediente', propietario ='$propietario', receptor ='$receptor',
 fechaCre ='$creacion',fechaCad ='$caducacion', descripcion ='$descripcion', direccion ='$direccion',
-estado ='$estado', tipo = '$tipo' WHERE expediente = '$id' ";
+estado ='$estado', tipo = '$tipo', observaciones ='$observaciones' WHERE expediente = '$id' ";
 $sentencia = mysql_query($qry,$con);
 if($sentencia){
 	echo '<script language="javascript">';
