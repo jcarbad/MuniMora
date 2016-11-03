@@ -124,7 +124,17 @@ $result = mysql_query($qry,$con);
                       <tr>
                         <?php
                         $id = $_REQUEST['value'];
-                        $qry = "SELECT * FROM notificaciones WHERE expediente = '$id'";
+                        $qry = "SELECT expediente,
+										propietario,
+										receptor,
+										fechaCre,
+										fechaCad,
+										descripcion,
+										direccion,
+										estado,
+										tipo,
+										observaciones
+								FROM notificaciones WHERE expediente = '$id'";
                         $sentencia = mysql_query($qry,$con);
                         $row = mysql_fetch_row($sentencia);
                         ?>
