@@ -73,7 +73,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                 	$result1 = mysql_query($query2,$con);
                 	while($row1 = mysql_fetch_row($result1)){ 
                	?>
-               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" value=<?php echo "EXP.",$row1[0]+1,"-16"; ?>>
+               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-",$row1[0]+1,"-16"; ?>>
                 <?php }?>
               </div>
 
