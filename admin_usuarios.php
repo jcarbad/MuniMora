@@ -268,6 +268,7 @@ $result = mysql_query($qry,$con);
                           <ul class="dropdown-menu pull-right" role="menu">
                             <li><a onclick="mostrarModal('myModalFormulario');">Agregar usuario</a>
                             </li>
+                            <li><a href="informes/Informe1.php">Informe</a></li>
                             <!--li><a href="#">Editar usuario</a>
                             </li>
                             <li class="divider"></li>
