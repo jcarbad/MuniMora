@@ -301,7 +301,7 @@ $result = mysql_query($qry,$con);
                                   <td><?php echo $row[0]; ?></td>
                                   <td><?php echo $row[1]; ?></td>
                                   <td><?php echo $row[2]; ?></td>
-                                  <td><?php echo $row[3]; ?></td>
+                                  <td><?php echo str_replace($row[3],"********",$row[3]); ?></td>
                                   <td><?php echo ($row[4] == 1) ?"Administrador" : "Inspector" ; ?></td>
                                   <td>
                                     <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarUsuario.php?value=<?php echo $row[2];?>'">Editar</button>
