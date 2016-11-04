@@ -124,21 +124,8 @@ $result = mysql_query($qry,$con);
                       <tr>
                         <?php
                         $id = $_REQUEST['value'];
-<<<<<<< HEAD
+
                         $qry = "SELECT expediente, propietario, receptor, fechaCad, fechaCre, descripcion, direccion, estado, tipo, observaciones FROM notificaciones WHERE expediente = '$id'";
-=======
-                        $qry = "SELECT expediente,
-										propietario,
-										receptor,
-										fechaCre,
-										fechaCad,
-										descripcion,
-										direccion,
-										estado,
-										tipo,
-										observaciones
-								FROM notificaciones WHERE expediente = '$id'";
->>>>>>> origin/master
                         $sentencia = mysql_query($qry,$con);
                         $row = mysql_fetch_row($sentencia);
                         ?>
