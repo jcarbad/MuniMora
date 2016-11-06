@@ -306,8 +306,7 @@ $result = mysql_query($qry,$con);
                                   <td><?php echo ($row[4] == 1) ?"Administrador" : "Inspector" ; ?></td>
                                   <td>
                                     <button type="button" class="btn btn-info" onclick="location.href='http://localhost/MuniMora/editarUsuario.php?value=<?php echo $row[2];?>'">Editar</button>
-                                    <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarUsuario_exec.php?value=<?php echo $row[2];?>'">Eliminar</button>
-
+                                    <button type="button" class="btn btn-danger" onclick="location.href='http://localhost/MuniMora/eliminarUsuario_exec.php?value=<?php echo $row[2];?>'">Eliminar</button>		
                                   </td> 
                                 </tr>
                                 <?php } ?>

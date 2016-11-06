@@ -11,9 +11,9 @@ function validarNotificacionEditar(){
 	$("#groupDescripcion").removeClass("has-error");
 	$("#groupDireccion").removeClass("has-error");
 	
-	 if ($("#exp").val() === "" || isNaN(parseInt($("#exp").val()))) {
+	 if ($("#exp").val() === "" ) {
         $("#groupExp").addClass("has-error");
-        validacion = false;
+       validacion = false;
 		noVacios = false;
     }
 	

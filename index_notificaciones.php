@@ -71,10 +71,14 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                 <?php
                 	$query2 = 'SELECT id FROM notificaciones ORDER BY id DESC LIMIT 1;';
                 	$result1 = mysql_query($query2,$con);
-                	while($row1 = mysql_fetch_row($result1)){ 
+					if($row1 = mysql_fetch_row($result1)){
+                	//while($row1 = mysql_fetch_row($result1)){ 
                	?>
-               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-",$row1[0]+1,"-16"; ?>>
-                <?php }?>
+               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
+                <?php }else{ 
+				?>
+                <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
+               <?php } ?>
               </div>
 
               <div class="form-group" id="groupPropietario">
