@@ -32,7 +32,7 @@ $descripcion = clean($_POST['descripcion']);
 $direccion = clean($_POST['direccion']);
 $estado = clean($_POST['estado']);
 $type = clean($_POST['tipo']);
-$observaciones = clean($_POST['observaciones']);
+$observaciones = $_POST['observaciones'];
 
 //Input Validations
 if($expediente == '') {

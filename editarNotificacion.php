@@ -123,7 +123,7 @@ $result = mysql_query($qry,$con);
                               name="formNotificacion">
                               <td>Expediente:
                                 <div class="form-group" id="groupExp">
-                                  <Input class="form-control" id="exp" name="exp" autofocus="true" type="text"  value="<?php echo $row[0];?>"></input>
+                                  <Input class="form-control" id="exp" name="exp" autofocus="true" type="text" readonly value="<?php echo $row[0];?>"></input>
                                 </div>
                               </td>
                               <td>Propietario:

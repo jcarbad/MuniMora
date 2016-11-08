@@ -53,161 +53,161 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
 }
 ?>
 >
-  <!-- modal para agregar usuarios -->
+<!-- modal para agregar usuarios -->
 
-  <!-- Modal para registro de usuarios -->
-  <div class="modal fade " id="myModalFormulario" action="notificaciones_exec.php" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" id="myModalTitle">Registrar notificación
-          </div>
-          <div class="modal-body " id="myModalMessage">
-
-            <form method="post" action="notificaciones_exec.php" accept-charset='UTF-8' name="formUsuario">
-              <div class="form-group" id="groupExp">
-                <label for="exp">Número de expediente</label>
-                <?php
-                	$query2 = 'SELECT id FROM notificaciones ORDER BY id DESC LIMIT 1;';
-                	$result1 = mysql_query($query2,$con);
-					if($row1 = mysql_fetch_row($result1)){
-                	//while($row1 = mysql_fetch_row($result1)){ 
-               	?>
-               		<input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
-                <?php }else{ 
-				?>
-                <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
-               <?php } ?>
-              </div>
-
-              <div class="form-group" id="groupPropietario">
-                <label for="propietario">Nombre de propietario</label>
-                <input type="text" class="form-control" id="propietario" name="propietario" autofocus="true" placeholder="Nombre de propietario">
-              </div>
-
-              <div class="form-group" id="groupReceptor">
-                <label for="receptor">Nombre de quien recibe</label>
-                <input type="text" class="form-control" id="receptor" name="receptor" autofocus="true" placeholder="Nombre de quien recibe">
-              </div>
-
-              <div class="form-group" id="groupFechaCreacion">
-                <label for="creacion">Fecha de Creación:</label>
-                <input type="date" id="creacion" name="creacion" autofocus="true" value=<?php echo date("Y-m-d");?>>
-              </div>
-
-              <div class="form-group" id="groupFechaCaducacion">
-                <label for="caducacion">Fecha de caducación:</label>
-                <input type="date" id="caducacion" name="caducacion" autofocus="true" min=<?php echo date("Y-m-d");?>>
-              </div>
-
-              <div class="form-group" id="groupDescripcion">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
-              </div>
-
-              <div class="form-group" id="groupDireccion">
-                <label for="direccion">Dirección:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
-              </div>
-
-              <div class="form-group" id="groupObservaciones">
-                <label for="observaciones">Observaciones:</label>
-                <input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones">
-              </div>
-
-              <div class="form-group" id="groupEstado">
-                <label for="estado">Estado de notificación:</label>
-                <select id="estado" name="estado">
-                  <option value="1" selected>Pendiente
-                    <option value="2">Resuelta
-                    </select>
-                  </div>
-
-              <div class="form-group" id="groupTipo">
-                <label for="tipo">Tipo de notificación:</label>
-                <select id="tipo" name="tipo">
-                  <option value="1" selected>Preventiva
-                    <option value="2">Segunda Notificación
-                    </select>
-                  </div>
-
-
-                  <div class="form-group">
-                    <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
-                    <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
-                  </div>
-
-                  <div class="form-group">
-
-                    <?php
-                    if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
-                      echo '<div class="alert alert-danger hiddenDiv" id="mesajeResult">';
-                      echo '<ul class="err">';
-                      echo '<strong id="mesajeResultNeg">Error!</strong>';
-                      foreach($_SESSION['ERRMSG_ARR'] as $msg) {
-                        echo '<li id="mesajeResultText">',$msg,'</li>';
-                      }
-                      echo '</ul>';
-                      echo '</div>';
-                      unset($_SESSION['ERRMSG_ARR']);
-                    }
-                    ?>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-          </div>
+<!-- Modal para registro de usuarios -->
+<div class="modal fade " id="myModalFormulario" action="notificaciones_exec.php" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="myModalTitle">Registrar notificación
         </div>
+        <div class="modal-body " id="myModalMessage">
 
-        <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
-
-        <div class="modal fade" id="myModalExito" action="registro_exec.php" role="dialog">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title" id="myModalTitle">Agregar una notificación
+          <form method="post" action="notificaciones_exec.php" accept-charset='UTF-8' name="formUsuario">
+            <div class="form-group" id="groupExp">
+              <label for="exp">Número de expediente</label>
+              <?php
+              $query2 = 'SELECT id FROM notificaciones ORDER BY id DESC LIMIT 1;';
+              $result1 = mysql_query($query2,$con);
+              if($row1 = mysql_fetch_row($result1)){
+                	//while($row1 = mysql_fetch_row($result1)){ 
+                ?>
+                <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
+                <?php }else{ 
+                  ?>
+                  <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
+                  <?php } ?>
                 </div>
-                <div class="modal-body " id="myModalMessage">
-                  <div class="form-group height25" >
-                    <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                      <strong id="mesajeResultNeg">Notificación agregada con éxito!</strong>
+
+                <div class="form-group" id="groupPropietario">
+                  <label for="propietario">Nombre de propietario</label>
+                  <input type="text" class="form-control" id="propietario" name="propietario" autofocus="true" placeholder="Nombre de propietario">
+                </div>
+
+                <div class="form-group" id="groupReceptor">
+                  <label for="receptor">Nombre de quien recibe</label>
+                  <input type="text" class="form-control" id="receptor" name="receptor" autofocus="true" placeholder="Nombre de quien recibe">
+                </div>
+
+                <div class="form-group" id="groupFechaCreacion">
+                  <label for="creacion">Fecha de Creación:</label>
+                  <input type="date" id="creacion" name="creacion" autofocus="true" value=<?php echo date("Y-m-d");?>>
+                </div>
+
+                <div class="form-group" id="groupFechaCaducacion">
+                  <label for="caducacion">Fecha de caducación:</label>
+                  <input type="date" id="caducacion" name="caducacion" autofocus="true" min=<?php echo date("Y-m-d");?>>
+                </div>
+
+                <div class="form-group" id="groupDescripcion">
+                  <label for="descripcion">Descripción:</label>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+                </div>
+
+                <div class="form-group" id="groupDireccion">
+                  <label for="direccion">Dirección:</label>
+                  <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección">
+                </div>
+
+                <div class="form-group" id="groupObservaciones">
+                  <label for="observaciones">Observaciones:</label>
+                  <input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Observaciones">
+                </div>
+
+                <div class="form-group" id="groupEstado">
+                  <label for="estado">Estado de notificación:</label>
+                  <select id="estado" name="estado">
+                    <option value="1" selected>Pendiente
+                      <option value="2">Resuelta
+                      </select>
+                    </div>
+
+                    <div class="form-group" id="groupTipo">
+                      <label for="tipo">Tipo de notificación:</label>
+                      <select id="tipo" name="tipo">
+                        <option value="1" selected>Preventiva
+                          <option value="2">Segunda Notificación
+                          </select>
+                        </div>
+
+
+                        <div class="form-group">
+                          <button type="submit" class="btn " id="enviar" name="enviar">Guardar</button>
+                          <button type="reset" class="btn btn-danger" id="cancelar" onClick ="ocultarModal('myModalFormulario')">Cancelar</button>
+                        </div>
+
+                        <div class="form-group">
+
+                          <?php
+                          if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count($_SESSION['ERRMSG_ARR']) >0 ) {
+                            echo '<div class="alert alert-danger hiddenDiv" id="mesajeResult">';
+                            echo '<ul class="err">';
+                            echo '<strong id="mesajeResultNeg">Error!</strong>';
+                            foreach($_SESSION['ERRMSG_ARR'] as $msg) {
+                              echo '<li id="mesajeResultText">',$msg,'</li>';
+                            }
+                            echo '</ul>';
+                            echo '</div>';
+                            unset($_SESSION['ERRMSG_ARR']);
+                          }
+                          ?>
+                        </div>
+
+                      </form>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <button type="button" class="btn btn-success" id="enviar" name="enviar" onclick="location.href='http://localhost/MuniMora/index_notificaciones.php'">OK</button>
-                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- ****************************************************************************************************************-->
+              <!-- *************************************  MODAL PARA USUARIO AGREGADO CON ÉXITO *************************************-->
 
-          <div id="wrapper">
-            <!-- Navigation -->
-            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">SISGENOT- P&aacute;gina principal de inspectores</a>
-              </div>
-              <!-- /.navbar-header -->
-              <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <?php
-                    echo $_SESSION['SESS_ID'];
-                    ?>
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user">
+              <div class="modal fade" id="myModalExito" action="registro_exec.php" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title" id="myModalTitle">Agregar una notificación
+                      </div>
+                      <div class="modal-body " id="myModalMessage">
+                        <div class="form-group height25" >
+                          <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                            <strong id="mesajeResultNeg">Notificación agregada con éxito!</strong>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <button type="button" class="btn btn-success" id="enviar" name="enviar" onclick="location.href='http://localhost/MuniMora/index_notificaciones.php'">OK</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ****************************************************************************************************************-->
+
+                <div id="wrapper">
+                  <!-- Navigation -->
+                  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="#">SISGENOT- P&aacute;gina principal de inspectores</a>
+                    </div>
+                    <!-- /.navbar-header -->
+                    <ul class="nav navbar-top-links navbar-right">
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <?php
+                          echo $_SESSION['SESS_ID'];
+                          ?>
+                          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
                     <!--li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a>
                     </li>
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
@@ -242,13 +242,13 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                         <a href="index_notificaciones.php">
                           <i class="fa fa-table fa-fw"></i>Registro de notificaciones
                           <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse in" aria-expanded="true">
-                                <li>
-                                    <a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
-                                </li>
-                               
-                            </ul>
-                      </li>
+                          <ul class="nav nav-second-level collapse in" aria-expanded="true">
+                            <li>
+                              <a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
+                            </li>
+                            
+                          </ul>
+                        </li>
                     <!--li>
                       <a onClick=" mostrarModal('myModalFormulario');"><i class="fa fa-table fa-fw"></i>Registrar usuario</a>
                     </li-->
@@ -337,43 +337,43 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                                   </td>
                                 </tr>
                                 <?php } ?>
-                            </tbody>
-                          </table>
-                          <!-- /.table-responsive -->
+                              </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                          </div>
+                          <!-- /.col-lg-4 (nested) -->
                         </div>
-                        <!-- /.col-lg-4 (nested) -->
+                        <!-- /.row -->
                       </div>
-                      <!-- /.row -->
+                      <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel-body -->
+                    <!-- /.panel -->
                   </div>
-                  <!-- /.panel -->
+                  <!-- /.col-lg-8 -->
                 </div>
-                <!-- /.col-lg-8 -->
+                <!-- /.row -->
               </div>
-              <!-- /.row -->
+              <!-- /#page-wrapper -->
+
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /#wrapper -->
 
-          </div>
-          <!-- /#wrapper -->
+            <!-- jQuery -->
+            <script src="./css/template/vendor/jquery/jquery.min.js"></script>
 
-          <!-- jQuery -->
-          <script src="./css/template/vendor/jquery/jquery.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="./css/template/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-          <!-- Bootstrap Core JavaScript -->
-          <script src="./css/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
+            <script src="./css/template/vendor/metisMenu/metisMenu.min.js"></script>
 
-          <!-- Metis Menu Plugin JavaScript -->
-          <script src="./css/template/vendor/metisMenu/metisMenu.min.js"></script>
+            <!-- Morris Charts JavaScript -->
+            <script src="./css/template/vendor/raphael/raphael.min.js"></script>
+            <script src="./css/template/vendor/morrisjs/morris.min.js"></script>
+            <script src="./css/template/data/morris-data.js"></script>
 
-          <!-- Morris Charts JavaScript -->
-          <script src="./css/template/vendor/raphael/raphael.min.js"></script>
-          <script src="./css/template/vendor/morrisjs/morris.min.js"></script>
-          <script src="./css/template/data/morris-data.js"></script>
+            <!-- Custom Theme JavaScript -->
+            <script src="./css/template/dist/js/sb-admin-2.js"></script>
+          </body>
 
-          <!-- Custom Theme JavaScript -->
-          <script src="./css/template/dist/js/sb-admin-2.js"></script>
-        </body>
-
-        </html>
+          </html>
