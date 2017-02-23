@@ -292,18 +292,15 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                     <div class="panel-body">
                       <div class="row">
 					  <div class="input-group custom-search-form">
+					  Buscar por:
 					  <select id="criterioBusqueda">
-						<option value="0">Numero de Expediente</option>
-						<option value="1">Nombre de Propietario</option>
+						<option value="0">Numero de expediente</option>
+						<option value="1">Nombre de propietario</option>
 						<option value="2">Nombre de quien recibe</option>
 						
 					  </select>
                      <input type="text" class="form-control" placeholder="Buscar notificacion..." id="txtBusqueda" onkeyup="filtrado()">
-                      <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </span>
+                      
                   </div>
                         <div class="table-responsive">
                           <table class="table table-responsive table-bordered table-striped" id="tablaNotificaciones">
