@@ -72,10 +72,10 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
               $query2 = 'SELECT id FROM notificaciones ORDER BY id DESC LIMIT 1;';
               $result1 = mysql_query($query2,$con);
               if($row1 = mysql_fetch_row($result1)){
-                	//while($row1 = mysql_fetch_row($result1)){ 
+                	//while($row1 = mysql_fetch_row($result1)){
                 ?>
                 <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
-                <?php }else{ 
+                <?php }else{
                   ?>
                   <input type="text" class="form-control" id="exp" name="exp" autofocus="true" readonly value=<?php echo "EXP-", $row1[0]+1 ,"-16"; ?>>
                   <?php } ?>
@@ -224,17 +224,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                 <div class="navbar-default sidebar" role="navigation">
                   <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                      <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                          <input type="text" class="form-control" placeholder="Search...">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                              <i class="fa fa-search"></i>
-                            </button>
-                          </span>
-                        </div>
-                        <!-- /input-group -->
-                      </li>
+                     
                       <li>
                         <a href="home.php"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                       </li>
@@ -246,7 +236,6 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                             <li>
                               <a onclick="mostrarModal('myModalFormulario');">Agregar una notificación</a>
                             </li>
-                            
                           </ul>
                         </li>
                     <!--li>
@@ -287,6 +276,7 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                 <div class="col-lg-12">
                   <h1 class="page-header">Notificaciones</h1>
                 </div>
+                
                 <!-- /.col-lg-12 -->
               </div>
               <!-- /.row -->
@@ -301,8 +291,22 @@ if( isset($_SESSION['ERRMSG_ARR']) && is_array($_SESSION['ERRMSG_ARR']) && count
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                       <div class="row">
+					  <div class="input-group custom-search-form">
+					  <select id="criterioBusqueda">
+						<option value="0">Numero de Expediente</option>
+						<option value="1">Nombre de Propietario</option>
+						<option value="2">Nombre de quien recibe</option>
+						
+					  </select>
+                     <input type="text" class="form-control" placeholder="Buscar notificacion..." id="txtBusqueda" onkeyup="filtrado()">
+                      <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </span>
+                  </div>
                         <div class="table-responsive">
-                          <table class="table table-responsive table-bordered table-striped">
+                          <table class="table table-responsive table-bordered table-striped" id="tablaNotificaciones">
                             <thead>
                               <tr>
                                 <th>Número de expediente</th>
